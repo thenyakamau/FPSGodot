@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Weapons" load_steps=3 format=3 uid="uid://b6djvptlplqne"]
+
+[ext_resource type="Script" path="res://scripts/resources/weapons.gd" id="1_1x8wp"]
+[ext_resource type="ArrayMesh" uid="uid://dtpros13n618j" path="res://meshes/weapons/crowbar/mesh_crowbar.res" id="1_218qy"]
+
+[resource]
+script = ExtResource("1_1x8wp")
+name = &"Crowbar"
+position = Vector3(0.315, -0.715, -0.45)
+rotation = Vector3(67.2, -63.8, -148.3)
+scale = Vector3(1, 1, 1)
+sway_min = Vector2(-20, -20)
+sway_max = Vector2(20, 20)
+sway_speed_position = 0.07
+sway_speed_rotation = 0.1
+sway_amount_position = 0.1
+sway_amount_rotation = 30.0
+idle_sway_adjustment = 10.0
+idle_sway_rotation_strength = 300.0
+random_sway_amount = 5.0
+mesh = ExtResource("1_218qy")
+shadow = true

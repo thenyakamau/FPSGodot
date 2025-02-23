@@ -23,8 +23,11 @@ var _mouse_rotation: Vector3
 
 @export_category("External Nodes")
 @export var CAMERA_CONTROLLER : Camera3D
-@export var ANIMATIONPLAYER: AnimationPlayer
+@export var ANIMATION_PLAYER: AnimationPlayer
+@export var WEAPON_CONTROLLER: WeaponController
 @export var CROUCH_SHAPECAST: Node3D
+
+var _gravity: float = 12.0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("exit"):
@@ -40,7 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ready() -> void:
 	# Get Mouse Input
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+	   
 	Global.player = self
 	
 	# Add crouch check shapecast collission exception for CharacterBody3D node
@@ -51,12 +54,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Update camera movements based on movement
 	_update_camera(delta)
-	
-	# Handle jump.
-	var _check_jump :bool= Input.is_action_just_pressed("jump") and is_on_floor() and !_is_crouching
-	if _check_jump:
-		velocity.y = JUMP_VELOCITY
-		
+
 func _update_camera(delta: float) -> void:
 	_current_rotation = _rotation_input
 	# Rotate camera using euler rotation
@@ -77,7 +75,8 @@ func _update_camera(delta: float) -> void:
 
 	
 func update_gravity(delta: float) -> void:
-	velocity += get_gravity() * delta
+	#velocity += get_gravity() * delta
+	velocity.y -= _gravity * delta
 
 func update_input(speed:float, acceleration: float, deceleration: float) -> void:
 	Global.debug.add_property("MovementSpeed", speed, 2) 

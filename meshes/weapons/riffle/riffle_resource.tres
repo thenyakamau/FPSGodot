@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Weapons" load_steps=3 format=3 uid="uid://dr6d3kvtg56du"]
+
+[ext_resource type="Script" path="res://scripts/resources/weapons.gd" id="1_27q3x"]
+[ext_resource type="ArrayMesh" uid="uid://bq3x7yx47w5dv" path="res://meshes/weapons/riffle/riffle_mesh.res" id="1_57s11"]
+
+[resource]
+script = ExtResource("1_27q3x")
+name = &"Riffle"
+position = Vector3(0.2, -0.155, -0.18)
+rotation = Vector3(0, 270, 0)
+scale = Vector3(1, 1, 1)
+sway_min = Vector2(-20, -20)
+sway_max = Vector2(20, 20)
+sway_speed_position = 0.07
+sway_speed_rotation = 0.1
+sway_amount_position = 0.1
+sway_amount_rotation = 30.0
+idle_sway_adjustment = 10.0
+idle_sway_rotation_strength = 300.0
+random_sway_amount = 5.0
+mesh = ExtResource("1_57s11")
+shadow = false

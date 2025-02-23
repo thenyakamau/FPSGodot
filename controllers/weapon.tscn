@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp4h5a3bhllsi"]
+
+[ext_resource type="ArrayMesh" uid="uid://dtpros13n618j" path="res://meshes/weapons/crowbar/mesh_crowbar.res" id="1_02pys"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_controller.gd" id="1_co1db"]
+[ext_resource type="Resource" path="res://meshes/weapons/riffle/riffle_resource.res" id="2_ujjd6"]
+[ext_resource type="ArrayMesh" uid="uid://bq3x7yx47w5dv" path="res://meshes/weapons/riffle/riffle_mesh.res" id="3_vqgub"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ie1hd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_685jv"]
+noise = SubResource("FastNoiseLite_ie1hd")
+
+[node name="Weapon" type="Node3D"]
+transform = Transform3D(0.0042053, 0.0054852, 0.999976, 0.0457501, 0.998936, -0.00567189, -0.998944, 0.0457728, 0.00394988, 0.201365, -0.155992, -0.734454)
+script = ExtResource("1_co1db")
+WEAPON_TYPE = ExtResource("2_ujjd6")
+sway_noise = SubResource("NoiseTexture2D_685jv")
+
+[node name="WeaponMesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+layers = 2
+cast_shadow = 0
+mesh = ExtResource("3_vqgub")
+
+[node name="WeaponShadow" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+visible = false
+layers = 2
+cast_shadow = 3
+mesh = ExtResource("1_02pys")

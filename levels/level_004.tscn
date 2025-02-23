@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://8abdqf5rdwj7"]
+
+[ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="1_diber"]
+[ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="2_wcris"]
+[ext_resource type="PackedScene" uid="uid://c6m5p5p8np544" path="res://controllers/fps_controller.tscn" id="3_okbe0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xyhm6"]
+material = ExtResource("1_diber")
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a2ke8"]
+data = PackedVector3Array(-10, 0.25, 10, 10, 0.25, 10, -10, -0.25, 10, 10, 0.25, 10, 10, -0.25, 10, -10, -0.25, 10, 10, 0.25, -10, -10, 0.25, -10, 10, -0.25, -10, -10, 0.25, -10, -10, -0.25, -10, 10, -0.25, -10, 10, 0.25, 10, 10, 0.25, -10, 10, -0.25, 10, 10, 0.25, -10, 10, -0.25, -10, 10, -0.25, 10, -10, 0.25, -10, -10, 0.25, 10, -10, -0.25, -10, -10, 0.25, 10, -10, -0.25, 10, -10, -0.25, -10, 10, 0.25, 10, -10, 0.25, 10, 10, 0.25, -10, -10, 0.25, 10, -10, 0.25, -10, 10, 0.25, -10, -10, -0.25, 10, 10, -0.25, 10, -10, -0.25, -10, 10, -0.25, 10, 10, -0.25, -10, -10, -0.25, -10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d5y6g"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hmhc5"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxrcy"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_xyhm6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a2ke8")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_wcris")]
+
+[node name="FPSController" parent="." instance=ExtResource("3_okbe0")]
+
+[node name="JumpPlatform" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89073, 0.612903, 1.19768)
+mesh = SubResource("BoxMesh_d5y6g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="JumpPlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpPlatform/StaticBody3D"]
+shape = SubResource("BoxShape3D_hmhc5")
+
+[node name="JumpPlatform" type="MeshInstance3D" parent="JumpPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89073, 0.612903, 1.19768)
+mesh = SubResource("BoxMesh_d5y6g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="JumpPlatform/JumpPlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpPlatform/JumpPlatform/StaticBody3D"]
+shape = SubResource("BoxShape3D_sxrcy")
+
+[node name="JumpPlatform" type="MeshInstance3D" parent="JumpPlatform/JumpPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89073, 0.612903, 1.19768)
+mesh = SubResource("BoxMesh_d5y6g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="JumpPlatform/JumpPlatform/JumpPlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpPlatform/JumpPlatform/JumpPlatform/StaticBody3D"]
+shape = SubResource("BoxShape3D_sxrcy")

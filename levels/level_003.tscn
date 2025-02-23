@@ -114,6 +114,7 @@ shape = SubResource("ConcavePolygonShape3D_rew8d")
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_qh1kc")]
 
 [node name="FPSController" parent="." instance=ExtResource("3_wt3jy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00146484, 0.021578, 0.000671387)
 
 [node name="HighPlatform" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0822179, 0.992126, -0.0944851, -0.996473, -0.0834328, -0.00897342, -0.0167859, 0.0934141, 0.995486, -3.51302, 1.89584, -0.344254)
